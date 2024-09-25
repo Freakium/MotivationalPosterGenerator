@@ -1,6 +1,8 @@
 # MotivationalQuoteGenerator
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.3.
+This project allows users to create a motivational poster fit with a picture, a headline, and a paragraph of text below. It is connected to Pexels allowing for royalty free image searches.
+
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.3. 
 
 ## Development server
 
