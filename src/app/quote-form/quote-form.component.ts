@@ -34,8 +34,10 @@ export class QuoteFormComponent {
     let quoteText = this.motivationalForm.controls.quote.value;
     if(!headline || !quoteText) {
       this.warningText = `Please enter a headline and quote text.`;
-      console.error('ERROR!');
       return;
+    }
+    else {
+      this.warningText = "";
     }
     
     client.photos.search({ query, orientation, per_page: 16 })

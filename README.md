@@ -1,4 +1,4 @@
-# MotivationalQuoteGenerator
+# Motivational Quote Generator
 
 This project allows users to create a motivational poster fit with a picture, a headline, and a paragraph of text below. It is connected to Pexels allowing for royalty free image searches.
 

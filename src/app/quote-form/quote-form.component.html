@@ -29,6 +29,7 @@
 </form>
 
 <mat-grid-list cols="2" gutterSize="5px" *ngIf="pictureList" [style.marginTop.px]="10">
+    <span *ngIf="!pictureList.photos.length">No results found.</span>
     <mat-grid-tile *ngFor="let i of pictureList.photos">
         <img style="cursor:pointer" [src]="i.src.medium" (click)="onClick($event)" [attr.data-imageURL]="i.src.original">
     </mat-grid-tile>
