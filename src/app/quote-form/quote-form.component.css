@@ -1,0 +1,30 @@
+mat-form-field {
+    width: 100%;
+}
+
+textarea {
+    resize: none;
+    width: 100%;
+}
+
+.formArea {
+    width: 100%;
+}
+
+.warningText {
+    color: #e43646;
+    font-weight: 700;
+    margin-top: 1rem;
+}
+
+#previewArea {
+    font-family: 'Times New Roman', Times, serif !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 64px;
+    background-color: #000;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    text-transform: uppercase;
+}

@@ -1,0 +1,37 @@
+<!-- User Input -->
+<form class="formArea" [formGroup]="motivationalForm" (ngSubmit)="onSubmit()">
+    <h2>Text</h2>
+    <div id="previewArea" [ngStyle]="{color: this.motivationalForm.controls.color.value}">{{this.motivationalForm.controls.headline.value}}</div>
+    <mat-form-field>
+        <mat-label>Headline</mat-label>
+        <input matInput placeholder="This is usually a single word." formControlName="headline">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Headline Colour</mat-label>
+        <input matInput type="color" formControlName="color">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Write an motivational quote</mat-label>
+        <textarea matInput placeholder="This can be a full paragraph." formControlName="quote"></textarea>
+    </mat-form-field>
+
+    <h2>Picture</h2>
+    <mat-radio-group aria-labelledby="example-radio-group-label" formControlName="orientationSelect">
+        <mat-radio-button value="landscape">Landscape</mat-radio-button>
+        <mat-radio-button value="portrait">Portrait</mat-radio-button>
+    </mat-radio-group>
+
+    <mat-form-field>
+        <mat-label>Search for images</mat-label>
+        <input matInput placeholder="Search Term" formControlName="searchTerm" />
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit" [disabled]="!motivationalForm.valid">Search</button>
+</form>
+
+<mat-grid-list cols="2" gutterSize="5px" *ngIf="pictureList" [style.marginTop.px]="10">
+    <mat-grid-tile *ngFor="let i of pictureList.photos">
+        <img style="cursor:pointer" [src]="i.src.medium" (click)="onClick($event)" [attr.data-imageURL]="i.src.original">
+    </mat-grid-tile>
+</mat-grid-list>
+
+<p class="warningText" *ngIf="warningText">{{warningText}}</p>

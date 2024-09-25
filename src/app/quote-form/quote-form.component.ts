@@ -1,0 +1,63 @@
+import { Component } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { createClient } from 'pexels';
+import { QuoteFormDialogComponent } from '../quote-form-dialog/quote-form-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
+
+@Component({
+  selector: 'app-quote-form',
+  templateUrl: './quote-form.component.html',
+  styleUrls: ['./quote-form.component.css']
+})
+export class QuoteFormComponent {
+  pictureList: any;
+  warningText: any;
+
+  constructor(private dialogRef : MatDialog){}
+
+  motivationalForm = new FormGroup({
+    orientationSelect: new FormControl('', {nonNullable: true}),
+    pictureURL: new FormControl(''),
+    headline: new FormControl('', {nonNullable: true}),
+    color: new FormControl('#225544', {nonNullable: true}),
+    quote: new FormControl('', {nonNullable: true}),
+    searchTerm: new FormControl('', {nonNullable: true}),
+  });
+
+  onSubmit() {
+    const client = createClient('M3mCPlqVebPtriAepk0o22IS4zza0VYV0Ajn5neHANNUZTNxTaciLZnN');
+    const query = this.motivationalForm.controls.searchTerm.value;
+    const orientation = this.motivationalForm.controls.orientationSelect.value;
+
+    // Validations for text fields
+    let headline = this.motivationalForm.controls.headline.value;
+    let quoteText = this.motivationalForm.controls.quote.value;
+    if(!headline || !quoteText) {
+      this.warningText = `Please enter a headline and quote text.`;
+      console.error('ERROR!');
+      return;
+    }
+    
+    client.photos.search({ query, orientation, per_page: 16 })
+    .then(data => {
+      this.pictureList = data;
+      console.log("Search Results:", data);
+    });
+  }
+
+  onClick(event: { target: any; srcElement: any; currentTarget: any; }) {
+    var target = event.target || event.srcElement || event.currentTarget;
+    var srcAttr = target.attributes['data-imageurl'];
+
+    this.dialogRef.open(QuoteFormDialogComponent, {
+      width: '100vw',
+      height: '100vh',
+      data: {
+        imgSrc: srcAttr.nodeValue,
+        headline: this.motivationalForm.controls.headline.value,
+        color: this.motivationalForm.controls.color.value,
+        quoteText: this.motivationalForm.controls.quote.value
+      }
+    });
+  }
+}
