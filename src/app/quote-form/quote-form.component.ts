@@ -32,8 +32,8 @@ export class QuoteFormComponent {
     // Validations for text fields
     let headline = this.motivationalForm.controls.headline.value;
     let quoteText = this.motivationalForm.controls.quote.value;
-    if(!headline || !quoteText) {
-      this.warningText = `Please enter a headline and quote text.`;
+    if(!headline && !quoteText) {
+      this.warningText = `Please enter a headline or quote text.`;
       return;
     }
     else {
@@ -56,6 +56,7 @@ export class QuoteFormComponent {
       height: '100vh',
       data: {
         imgSrc: srcAttr.nodeValue,
+        isLandscape: this.motivationalForm.controls.orientationSelect.value === "landscape",
         headline: this.motivationalForm.controls.headline.value,
         color: this.motivationalForm.controls.color.value,
         quoteText: this.motivationalForm.controls.quote.value

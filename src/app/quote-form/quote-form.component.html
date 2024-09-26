@@ -1,7 +1,10 @@
 <!-- User Input -->
 <form class="formArea" [formGroup]="motivationalForm" (ngSubmit)="onSubmit()">
     <h2>Text</h2>
-    <div id="previewArea" [ngStyle]="{color: this.motivationalForm.controls.color.value}">{{this.motivationalForm.controls.headline.value}}</div>
+    <div id="previewArea">
+        <h1 id="previewHeadline" [ngStyle]="{color: this.motivationalForm.controls.color.value}">{{this.motivationalForm.controls.headline.value}}</h1>
+        <h5 id="previewParagraph">{{this.motivationalForm.controls.quote.value}}</h5>
+    </div>
     <mat-form-field>
         <mat-label>Headline</mat-label>
         <input matInput placeholder="This is usually a single word." formControlName="headline">
@@ -11,7 +14,7 @@
         <input matInput type="color" formControlName="color">
     </mat-form-field>
     <mat-form-field>
-        <mat-label>Write an motivational quote</mat-label>
+        <mat-label>Motivational Quote / Paragraph</mat-label>
         <textarea matInput placeholder="This can be a full paragraph." formControlName="quote"></textarea>
     </mat-form-field>
 

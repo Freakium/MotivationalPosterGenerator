@@ -1,6 +1,6 @@
 <mat-dialog-content>
   <div id="displayArea">
-    <img src="{{imgSrc}}" [ngStyle]="{borderColor: this.color}" />
+    <img src="{{imgSrc}}" [ngStyle]="{borderColor: this.color, maxWidth: imgWidth}" />
     <h1 [ngStyle]="{color: this.color}">{{headline}}</h1>
     <h5>{{quoteText}}</h5>
   </div>

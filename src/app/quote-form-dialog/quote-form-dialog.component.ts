@@ -8,12 +8,14 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class QuoteFormDialogComponent {
   imgSrc: string | undefined;
+  imgWidth: string | undefined;
   headline: string | undefined;
   color: string | undefined;
   quoteText: string | undefined;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
     this.imgSrc = data.imgSrc;
+    this.imgWidth = data.isLandscape ? '80%' : '30%';
     this.headline = data.headline;
     this.color = data.color;
     this.quoteText = data.quoteText;

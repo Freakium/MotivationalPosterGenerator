@@ -18,13 +18,19 @@ textarea {
 }
 
 #previewArea {
-    font-family: 'Times New Roman', Times, serif !important;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     height: 64px;
     background-color: #000;
     margin-bottom: 1rem;
-    font-size: 2rem;
+    text-align: center;
+}
+
+#previewHeadline {
+    font-family: 'Times New Roman', Times, serif !important;
     text-transform: uppercase;
+    margin-bottom: 0;
+}
+
+#previewParagraph {
+    font-family: 'Times New Roman', Times, serif !important;
+    color: #fff;
 }
