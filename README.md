@@ -4,7 +4,7 @@ This project allows users to create a motivational poster fit with a picture, a 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.3.
 
-You can access this project online at: http://motivationalgenerator.getenjoyment.net
+You can access this project online at: http://motivgen.scienceontheweb.net
 
 ## Development server
 
