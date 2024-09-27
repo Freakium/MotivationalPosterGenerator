@@ -12,6 +12,7 @@ import { MatDialog } from '@angular/material/dialog';
 export class QuoteFormComponent {
   pictureList: any;
   warningText: any;
+  isLandscape = window.screen.availHeight < window.screen.availWidth;
 
   constructor(private dialogRef : MatDialog){}
 
@@ -27,7 +28,7 @@ export class QuoteFormComponent {
   onSubmit() {
     const client = createClient('M3mCPlqVebPtriAepk0o22IS4zza0VYV0Ajn5neHANNUZTNxTaciLZnN');
     const query = this.motivationalForm.controls.searchTerm.value;
-    const orientation = this.motivationalForm.controls.orientationSelect.value;
+    let orientation = this.motivationalForm.controls.orientationSelect.value;
 
     // Validations for text fields
     let headline = this.motivationalForm.controls.headline.value;
@@ -39,6 +40,9 @@ export class QuoteFormComponent {
     else {
       this.warningText = "";
     }
+
+    // set orientation to landscape if none selected
+    orientation = orientation ? orientation : "landscape";
     
     client.photos.search({ query, orientation, per_page: 16 })
     .then(data => {

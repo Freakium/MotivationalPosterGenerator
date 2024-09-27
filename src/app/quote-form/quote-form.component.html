@@ -20,8 +20,8 @@
 
     <h2>Picture</h2>
     <mat-radio-group aria-labelledby="example-radio-group-label" formControlName="orientationSelect">
-        <mat-radio-button value="landscape">Landscape</mat-radio-button>
-        <mat-radio-button value="portrait">Portrait</mat-radio-button>
+        <mat-radio-button value="landscape" [checked]="isLandscape">Landscape</mat-radio-button>
+        <mat-radio-button value="portrait" [checked]="!isLandscape">Portrait</mat-radio-button>
     </mat-radio-group>
 
     <mat-form-field>
