@@ -12,12 +12,12 @@ import { MatDialog } from '@angular/material/dialog';
 export class QuoteFormComponent {
   pictureList: any;
   warningText: any;
-  isLandscape = window.screen.availHeight <= window.screen.availWidth;
 
   constructor(private dialogRef : MatDialog){}
 
   motivationalForm = new FormGroup({
-    orientationSelect: new FormControl('', {nonNullable: true}),
+    orientationSelect: new FormControl(
+      window.screen.availHeight <= window.screen.availWidth ? "landscape" : "portrait", {nonNullable: true}),
     pictureURL: new FormControl(''),
     headline: new FormControl('', {nonNullable: true}),
     color: new FormControl('#225544', {nonNullable: true}),
@@ -46,7 +46,9 @@ export class QuoteFormComponent {
     
     client.photos.search({ query, orientation, per_page: 16 })
     .then(data => {
+      // save list if results
       this.pictureList = data;
+      
       console.log("Search Results:", data);
     });
   }
@@ -58,6 +60,7 @@ export class QuoteFormComponent {
     this.dialogRef.open(QuoteFormDialogComponent, {
       width: '100vw',
       height: '100vh',
+      maxWidth: '90vw',
       data: {
         imgSrc: srcAttr.nodeValue,
         isLandscape: this.motivationalForm.controls.orientationSelect.value === "landscape",
@@ -66,5 +69,9 @@ export class QuoteFormComponent {
         quoteText: this.motivationalForm.controls.quote.value
       }
     });
+  }
+
+  async getPageResults(url: string) {
+    this.pictureList = await fetch(url);
   }
 }

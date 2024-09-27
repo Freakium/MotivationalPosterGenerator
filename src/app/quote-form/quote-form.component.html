@@ -2,7 +2,9 @@
 <form class="formArea" [formGroup]="motivationalForm" (ngSubmit)="onSubmit()">
     <h2>Text</h2>
     <div id="previewArea">
-        <h1 id="previewHeadline" [ngStyle]="{color: this.motivationalForm.controls.color.value}">{{this.motivationalForm.controls.headline.value}}</h1>
+        <h1 id="previewHeadline" [ngStyle]="{color: this.motivationalForm.controls.color.value}">
+            {{this.motivationalForm.controls.headline.value}}
+        </h1>
         <h5 id="previewParagraph">{{this.motivationalForm.controls.quote.value}}</h5>
     </div>
     <mat-form-field>
@@ -20,8 +22,8 @@
 
     <h2>Picture</h2>
     <mat-radio-group aria-labelledby="example-radio-group-label" formControlName="orientationSelect">
-        <mat-radio-button value="landscape" [checked]="isLandscape">Landscape</mat-radio-button>
-        <mat-radio-button value="portrait" [checked]="!isLandscape">Portrait</mat-radio-button>
+        <mat-radio-button value="landscape">Landscape</mat-radio-button>
+        <mat-radio-button value="portrait">Portrait</mat-radio-button>
     </mat-radio-group>
 
     <mat-form-field>
@@ -31,11 +33,20 @@
     <button mat-raised-button color="primary" type="submit" [disabled]="!motivationalForm.valid">Search</button>
 </form>
 
-<mat-grid-list cols="2" gutterSize="5px" *ngIf="pictureList" [style.marginTop.px]="10">
-    <span *ngIf="!pictureList.photos.length">No results found.</span>
-    <mat-grid-tile *ngFor="let i of pictureList.photos">
-        <img style="cursor:pointer" [src]="i.src.medium" (click)="onClick($event)" [attr.data-imageURL]="i.src.original">
-    </mat-grid-tile>
-</mat-grid-list>
+<div *ngIf="pictureList">
+    <mat-grid-list id="imageGrid" cols="2" gutterSize="5px">
+        <span *ngIf="!pictureList.photos.length">No results found.</span>
+        <mat-grid-tile *ngFor="let i of pictureList.photos">
+            <img style="cursor:pointer" [src]="i.src.medium" (click)="onClick($event)"
+                [attr.data-imageURL]="i.src.original">
+        </mat-grid-tile>
+    </mat-grid-list>
+    <button mat-raised-button color="accent" *ngIf="pictureList.prev_page"
+        (click)="getPageResults(pictureList.next_page)">Prev
+    </button>
+    <button mat-raised-button color="accent" *ngIf="pictureList.next_page"
+        (click)="getPageResults(pictureList.next_page)">Next
+    </button>
+</div>
 
 <p class="warningText" *ngIf="warningText">{{warningText}}</p>

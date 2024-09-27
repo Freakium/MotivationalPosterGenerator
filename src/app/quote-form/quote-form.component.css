@@ -34,3 +34,7 @@ textarea {
     font-family: 'Times New Roman', Times, Garamond, serif !important;
     color: #fff;
 }
+
+#imageGrid {
+    margin: 10px 0;
+}
