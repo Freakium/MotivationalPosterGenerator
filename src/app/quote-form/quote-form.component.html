@@ -41,12 +41,16 @@
                 [attr.data-imageURL]="i.src.original">
         </mat-grid-tile>
     </mat-grid-list>
-    <button mat-raised-button color="accent" *ngIf="pictureList.prev_page"
-        (click)="getPageResults(pictureList.next_page)">Prev
-    </button>
-    <button mat-raised-button color="accent" *ngIf="pictureList.next_page"
-        (click)="getPageResults(pictureList.next_page)">Next
-    </button>
+
+    <div id="pageButtonArea">
+        <button mat-raised-button color="accent" *ngIf="pictureList.prev_page"
+            (click)="getPageResults(pictureList.prev_page)">Prev
+        </button>
+        <button mat-raised-button color="accent" *ngIf="pictureList.next_page" id="nextPageBtn"
+            (click)="getPageResults(pictureList.next_page)">Next
+        </button>
+    </div>
+
 </div>
 
 <p class="warningText" *ngIf="warningText">{{warningText}}</p>

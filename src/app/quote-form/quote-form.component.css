@@ -38,3 +38,12 @@ textarea {
 #imageGrid {
     margin: 10px 0;
 }
+
+#pageButtonArea {
+    display: flex;
+    justify-content: space-between;
+}
+
+#nextPageBtn {
+    margin-left: auto;
+}

@@ -10,6 +10,7 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./quote-form.component.css']
 })
 export class QuoteFormComponent {
+  private clientKey = "M3mCPlqVebPtriAepk0o22IS4zza0VYV0Ajn5neHANNUZTNxTaciLZnN";
   pictureList: any;
   warningText: any;
 
@@ -26,7 +27,7 @@ export class QuoteFormComponent {
   });
 
   onSubmit() {
-    const client = createClient('M3mCPlqVebPtriAepk0o22IS4zza0VYV0Ajn5neHANNUZTNxTaciLZnN');
+    const client = createClient(this.clientKey);
     const query = this.motivationalForm.controls.searchTerm.value;
     let orientation = this.motivationalForm.controls.orientationSelect.value;
 
@@ -44,7 +45,7 @@ export class QuoteFormComponent {
     // set orientation to landscape if none selected
     orientation = orientation ? orientation : "landscape";
     
-    client.photos.search({ query, orientation, per_page: 16 })
+    client.photos.search({ query, orientation, per_page: 18 })
     .then(data => {
       // save list if results
       this.pictureList = data;
@@ -72,6 +73,13 @@ export class QuoteFormComponent {
   }
 
   async getPageResults(url: string) {
-    this.pictureList = await fetch(url);
+    let response = await fetch(url);
+    
+    if(!response.ok) {
+      this.warningText = "An error occurred while retrieving images. Please try again later.";
+      console.error(response);
+    }
+    
+    this.pictureList = await response.json();
   }
 }
