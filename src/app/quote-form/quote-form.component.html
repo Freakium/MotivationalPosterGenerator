@@ -20,7 +20,7 @@
         <textarea matInput placeholder="This can be a full paragraph." formControlName="quote"></textarea>
     </mat-form-field>
 
-    <h2>Picture</h2>
+    <h2>Image</h2>
     <mat-radio-group aria-labelledby="example-radio-group-label" formControlName="orientationSelect">
         <mat-radio-button value="landscape">Landscape</mat-radio-button>
         <mat-radio-button value="portrait">Portrait</mat-radio-button>
@@ -33,21 +33,21 @@
     <button mat-raised-button color="primary" type="submit" [disabled]="!motivationalForm.valid">Search</button>
 </form>
 
-<div *ngIf="pictureList">
+<div *ngIf="imageList">
     <mat-grid-list id="imageGrid" cols="2" gutterSize="5px">
-        <span *ngIf="!pictureList.photos.length">No results found.</span>
-        <mat-grid-tile *ngFor="let i of pictureList.photos">
+        <span *ngIf="!imageList.photos.length">No results found.</span>
+        <mat-grid-tile *ngFor="let i of imageList.photos">
             <img style="cursor:pointer" [src]="i.src.medium" (click)="onClick($event)"
                 [attr.data-imageURL]="i.src.original">
         </mat-grid-tile>
     </mat-grid-list>
 
     <div id="pageButtonArea">
-        <button mat-raised-button color="accent" *ngIf="pictureList.prev_page"
-            (click)="getPageResults(pictureList.prev_page)">Prev
+        <button mat-raised-button color="accent" *ngIf="imageList.prev_page"
+            (click)="getPageResults(imageList.prev_page)">Prev
         </button>
-        <button mat-raised-button color="accent" *ngIf="pictureList.next_page" id="nextPageBtn"
-            (click)="getPageResults(pictureList.next_page)">Next
+        <button mat-raised-button color="accent" *ngIf="imageList.next_page" id="nextPageBtn"
+            (click)="getPageResults(imageList.next_page)">Next
         </button>
     </div>
 

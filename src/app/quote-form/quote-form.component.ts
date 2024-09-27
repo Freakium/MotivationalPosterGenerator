@@ -11,19 +11,18 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class QuoteFormComponent {
   private clientKey = "M3mCPlqVebPtriAepk0o22IS4zza0VYV0Ajn5neHANNUZTNxTaciLZnN";
-  pictureList: any;
+  imageList: any;
   warningText: any;
 
-  constructor(private dialogRef : MatDialog){}
+  constructor(private dialogRef: MatDialog) { }
 
   motivationalForm = new FormGroup({
     orientationSelect: new FormControl(
-      window.screen.availHeight <= window.screen.availWidth ? "landscape" : "portrait", {nonNullable: true}),
-    pictureURL: new FormControl(''),
-    headline: new FormControl('', {nonNullable: true}),
-    color: new FormControl('#225544', {nonNullable: true}),
-    quote: new FormControl('', {nonNullable: true}),
-    searchTerm: new FormControl('', {nonNullable: true}),
+      window.screen.availHeight <= window.screen.availWidth ? "landscape" : "portrait", { nonNullable: true }),
+    headline: new FormControl('', { nonNullable: true }),
+    color: new FormControl('#225544', { nonNullable: true }),
+    quote: new FormControl('', { nonNullable: true }),
+    searchTerm: new FormControl('', { nonNullable: true }),
   });
 
   onSubmit() {
@@ -34,8 +33,13 @@ export class QuoteFormComponent {
     // Validations for text fields
     let headline = this.motivationalForm.controls.headline.value;
     let quoteText = this.motivationalForm.controls.quote.value;
-    if(!headline && !quoteText) {
+    if (!headline && !quoteText) {
       this.warningText = `Please enter a headline or quote text.`;
+      return;
+    }
+    // make sure query exists
+    else if (!query) {
+      this.warningText = `Please enter an image search term.`;
       return;
     }
     else {
@@ -44,14 +48,14 @@ export class QuoteFormComponent {
 
     // set orientation to landscape if none selected
     orientation = orientation ? orientation : "landscape";
-    
+
     client.photos.search({ query, orientation, per_page: 18 })
-    .then(data => {
-      // save list if results
-      this.pictureList = data;
-      
-      console.log("Search Results:", data);
-    });
+      .then(data => {
+        // save list if results
+        this.imageList = data;
+
+        console.log("Search Results:", data);
+      });
   }
 
   onClick(event: { target: any; srcElement: any; currentTarget: any; }) {
@@ -79,12 +83,12 @@ export class QuoteFormComponent {
       },
       method: 'GET'
     });
-    
-    if(!response.ok) {
+
+    if (!response.ok) {
       this.warningText = "An error occurred while retrieving images. Please try again later.";
       console.error(response);
     }
-    
-    this.pictureList = await response.json();
+
+    this.imageList = await response.json();
   }
 }

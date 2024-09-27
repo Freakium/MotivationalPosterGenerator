@@ -19,6 +19,7 @@ img {
     margin-bottom: 1rem;
     max-width: 70vw;
     max-height: 75vh;
+    cursor: pointer;
 }
 
 h1 {

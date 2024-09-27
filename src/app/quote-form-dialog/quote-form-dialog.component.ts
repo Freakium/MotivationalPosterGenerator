@@ -1,5 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-quote-form-dialog',
@@ -17,5 +18,14 @@ export class QuoteFormDialogComponent {
     this.headline = data.headline;
     this.color = data.color;
     this.quoteText = data.quoteText;
+  }
+
+  createPNG() {
+    let display = document.getElementById('motivCanvas');
+    if (!display) return;
+
+    html2canvas(display, {useCORS: true}).then(function (canvas) {
+      window.open(canvas.toDataURL("image/png"));
+    });
   }
 }
