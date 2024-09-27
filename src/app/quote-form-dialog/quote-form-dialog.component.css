@@ -7,11 +7,6 @@ mat-dialog-content {
     max-height: 100%;
 }
 
-#closeDialog {
-    position: fixed;
-    right: 0;
-}
-
 #displayArea {
     display: flex;
     flex-direction: column;
