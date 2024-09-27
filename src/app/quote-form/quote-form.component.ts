@@ -12,7 +12,7 @@ import { MatDialog } from '@angular/material/dialog';
 export class QuoteFormComponent {
   pictureList: any;
   warningText: any;
-  isLandscape = window.screen.availHeight < window.screen.availWidth;
+  isLandscape = window.screen.availHeight <= window.screen.availWidth;
 
   constructor(private dialogRef : MatDialog){}
 
