@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   currentYear = new Date().getFullYear();
+  showInstructions = window.location.pathname === '/';
 }
