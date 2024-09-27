@@ -272,4 +272,9 @@ app-dialog-container {
         display: none;
         visibility: hidden;
     }
+
+    .card.highlight-card {
+        padding: 40px 16px;
+    }
+
 }
