@@ -25,12 +25,12 @@ textarea {
 }
 
 #previewHeadline {
-    font-family: 'Times New Roman', Times, serif !important;
+    font-family: 'Times New Roman', Times, Garamond, serif !important;
     text-transform: uppercase;
     margin-bottom: 0;
 }
 
 #previewParagraph {
-    font-family: 'Times New Roman', Times, serif !important;
+    font-family: 'Times New Roman', Times, Garamond, serif !important;
     color: #fff;
 }

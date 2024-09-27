@@ -19,14 +19,14 @@ img {
 }
 
 h1 {
-    font-family: 'Times New Roman', Times, serif !important;
+    font-family: 'Times New Roman', Times, Garamond, serif !important;
     font-size: 3vw;
     color: #254;
     text-transform: uppercase;
 }
 
 h5 {
-    font-family: 'Times New Roman', Times, serif !important;
+    font-family: 'Times New Roman', Times, Garamond, serif !important;
     max-width: 100%;
     color: #fff;
 }
