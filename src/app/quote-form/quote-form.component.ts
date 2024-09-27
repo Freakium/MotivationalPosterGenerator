@@ -73,7 +73,12 @@ export class QuoteFormComponent {
   }
 
   async getPageResults(url: string) {
-    let response = await fetch(url);
+    let response = await fetch(url, {
+      headers: {
+        Authorization: this.clientKey
+      },
+      method: 'GET'
+    });
     
     if(!response.ok) {
       this.warningText = "An error occurred while retrieving images. Please try again later.";
