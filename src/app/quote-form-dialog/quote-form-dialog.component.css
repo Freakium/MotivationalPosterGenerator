@@ -7,6 +7,15 @@ mat-dialog-content {
     max-height: 100%;
 }
 
+#closeDialogBtn {
+    position: absolute;
+    right: 0;
+}
+
+#closeDialogBtn mat-icon {
+    color: #fff;
+}
+
 #displayArea {
     display: flex;
     flex-direction: column;

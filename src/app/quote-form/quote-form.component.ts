@@ -65,7 +65,7 @@ export class QuoteFormComponent {
     this.dialogRef.open(QuoteFormDialogComponent, {
       width: '100vw',
       height: '100vh',
-      maxWidth: '90vw',
+      maxWidth: '100vw',
       data: {
         imgSrc: srcAttr.nodeValue,
         isLandscape: this.motivationalForm.controls.orientationSelect.value === "landscape",

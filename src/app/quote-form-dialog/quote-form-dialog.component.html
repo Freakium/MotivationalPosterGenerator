@@ -1,3 +1,6 @@
+<button id="closeDialogBtn" mat-icon-button aria-label="close dialog" mat-dialog-close>
+  <mat-icon>close</mat-icon>
+</button>
 <mat-dialog-content id="motivCanvas">
   <div id="displayArea">
     <img src="{{imgSrc}}" [ngStyle]="{borderColor: this.color}" (click)="createPNG()" title="Click to generate image" />
