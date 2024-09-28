@@ -21,11 +21,18 @@ export class QuoteFormDialogComponent {
   }
 
   createPNG() {
+    // Get the preview dialog
     let display = document.getElementById('motivCanvas');
     if (!display) return;
 
-    html2canvas(display, {useCORS: true}).then(function (canvas) {
-      window.open(canvas.toDataURL("image/png"));
+    // create a canvas (screenshot)
+    html2canvas(display, { useCORS: true }).then(function (canvas) {
+      let link = document.getElementById('link');
+      if (!link) return;
+
+      // convert the canvas to a png and create a download link
+      link.setAttribute('href', canvas.toDataURL("image/png").replace("image/png", "image/octet-stream"));
+      link.click();
     });
   }
 }
