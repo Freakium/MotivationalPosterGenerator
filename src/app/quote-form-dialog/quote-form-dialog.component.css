@@ -39,10 +39,12 @@ h1 {
     text-transform: uppercase;
 }
 
-h5 {
+pre {
     font-family: 'Times New Roman', Times, Garamond, serif !important;
+    font-weight: 500;
     max-width: 100%;
     color: #fff;
+    margin: 0;
 }
 
 @media screen and (max-width: 767px) {
