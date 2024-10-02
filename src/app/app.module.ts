@@ -27,8 +27,8 @@ import { QuoteFormDialogComponent } from './quote-form-dialog/quote-form-dialog.
   imports: [
     BrowserModule,
     RouterModule.forRoot([
-      {path: '', component: QuoteFormComponent},
-      {path: '**', component: PageNotFoundComponent}
+      { path: '', component: QuoteFormComponent },
+      { path: '**', component: PageNotFoundComponent }
     ]),
     BrowserAnimationsModule,
     FormsModule,
