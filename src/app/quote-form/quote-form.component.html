@@ -1,5 +1,5 @@
 <!-- User Input -->
-<form class="formArea" [formGroup]="motivationalForm" (ngSubmit)="onSubmit()">
+<form class="card" [formGroup]="motivationalForm" (ngSubmit)="onSubmit()">
     <h2>Text</h2>
     <div id="previewArea">
         <h1 id="previewHeadline" [ngStyle]="{color: this.motivationalForm.controls.color.value}">
@@ -20,7 +20,7 @@
         <textarea matInput placeholder="This can be a full paragraph." formControlName="quote"></textarea>
     </mat-form-field>
 
-    <h2>Image</h2>
+    <h2>Image Search</h2>
     <mat-radio-group aria-labelledby="example-radio-group-label" formControlName="orientationSelect">
         <mat-radio-button value="landscape">Landscape</mat-radio-button>
         <mat-radio-button value="portrait">Portrait</mat-radio-button>
@@ -30,10 +30,14 @@
         <mat-label>Search for images</mat-label>
         <input matInput placeholder="Search Term" formControlName="searchTerm" />
     </mat-form-field>
+
     <button mat-raised-button color="primary" type="submit" [disabled]="!motivationalForm.valid">Search</button>
+
+    <p class="warningText" *ngIf="warningText">{{warningText}}</p>
 </form>
 
-<div *ngIf="imageList">
+<div id="imageArea" class="card" *ngIf="imageList">
+    <h2>Select an Image</h2>
     <mat-grid-list id="imageGrid" cols="2" gutterSize="5px">
         <span *ngIf="!imageList.photos.length">No results found.</span>
         <mat-grid-tile *ngFor="let i of imageList.photos">
@@ -52,5 +56,3 @@
     </div>
 
 </div>
-
-<p class="warningText" *ngIf="warningText">{{warningText}}</p>

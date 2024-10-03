@@ -7,13 +7,21 @@ textarea {
     width: 100%;
 }
 
-.formArea {
-    width: 100%;
+.card {
+    background-color: rgba(255, 255, 255, 0.75);
+    padding: 1rem;
+    border: 1px solid #aaa;
+    border-radius: 1rem;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
 }
 
 .warningText {
     color: #e43646;
     font-weight: 700;
+    margin-top: 1rem;
+}
+
+#imageArea {
     margin-top: 1rem;
 }
 
