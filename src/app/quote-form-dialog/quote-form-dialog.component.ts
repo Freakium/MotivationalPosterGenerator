@@ -12,12 +12,18 @@ export class QuoteFormDialogComponent {
   headline: string | undefined;
   color: string | undefined;
   quoteText: string | undefined;
+  isDark: boolean | undefined;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
     this.imgSrc = data.imgSrc;
     this.headline = data.headline;
     this.color = data.color;
     this.quoteText = data.quoteText;
+    this.isDark = true;
+  }
+
+  toggleMode() {
+    this.isDark = !this.isDark;
   }
 
   createPNG() {

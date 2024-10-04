@@ -58,7 +58,7 @@ export class QuoteFormComponent {
       });
   }
 
-  onClick(event: { target: any; srcElement: any; currentTarget: any; }) {
+  searchImages(event: { target: any; srcElement: any; currentTarget: any; }) {
     var target = event.target || event.srcElement || event.currentTarget;
     var srcAttr = target.attributes['data-imageurl'];
 

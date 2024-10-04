@@ -8,12 +8,12 @@
         <h5 id="previewParagraph">{{this.motivationalForm.controls.quote.value ?? "- Quote or Paragraph -"}}</h5>
     </div>
     <mat-form-field>
-        <mat-label>Headline</mat-label>
-        <input matInput placeholder="This is usually a single word." formControlName="headline">
-    </mat-form-field>
-    <mat-form-field>
         <mat-label>Headline Colour</mat-label>
         <input matInput type="color" formControlName="color">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Headline</mat-label>
+        <input matInput placeholder="This is usually a single word." formControlName="headline">
     </mat-form-field>
     <mat-form-field>
         <mat-label>Motivational Quote / Paragraph</mat-label>
@@ -41,7 +41,7 @@
     <mat-grid-list id="imageGrid" cols="2" gutterSize="5px">
         <span *ngIf="!imageList.photos.length">No results found.</span>
         <mat-grid-tile *ngFor="let i of imageList.photos">
-            <img style="cursor:pointer" [src]="i.src.medium" (click)="onClick($event)"
+            <img style="cursor:pointer" [src]="i.src.medium" (click)="searchImages($event)"
                 [attr.data-imageURL]="i.src.original">
         </mat-grid-tile>
     </mat-grid-list>

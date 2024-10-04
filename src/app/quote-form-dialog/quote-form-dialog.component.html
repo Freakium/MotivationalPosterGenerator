@@ -1,11 +1,14 @@
-<button id="closeDialogBtn" mat-icon-button aria-label="close dialog" mat-dialog-close>
-  <mat-icon>close</mat-icon>
+<button id="toggleModeBtn" mat-icon-button aria-label="toggle colour mode" (click)="toggleMode()">
+  <mat-icon [ngStyle]="{color: this.isDark ? '#fff' : '#000'}">contrast</mat-icon>
 </button>
-<mat-dialog-content id="motivCanvas">
+<button id="closeDialogBtn" mat-icon-button aria-label="close dialog" mat-dialog-close>
+  <mat-icon [ngStyle]="{color: this.isDark ? '#fff' : '#000'}">close</mat-icon>
+</button>
+<mat-dialog-content id="motivCanvas" [ngStyle]="{backgroundColor: this.isDark ? '#000' : '#fff'}">
   <div id="displayArea">
     <img src="{{imgSrc}}" [ngStyle]="{borderColor: this.color}" (click)="createPNG()" title="Click to generate image" />
     <h1 [ngStyle]="{color: this.color}">{{headline}}</h1>
-    <pre>{{quoteText}}</pre>
+    <pre [ngStyle]="{color: this.isDark ? '#fff' : '#000'}">{{quoteText}}</pre>
   </div>
 </mat-dialog-content>
 <a id="link" download="motivationalPoster.png"></a>
