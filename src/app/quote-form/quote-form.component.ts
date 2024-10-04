@@ -19,9 +19,9 @@ export class QuoteFormComponent {
   motivationalForm = new FormGroup({
     orientationSelect: new FormControl(
       window.screen.availHeight <= window.screen.availWidth ? "landscape" : "portrait", { nonNullable: true }),
-    headline: new FormControl('', { nonNullable: true }),
+    headline: new FormControl(null, { nonNullable: true }),
     color: new FormControl('#225544', { nonNullable: true }),
-    quote: new FormControl('', { nonNullable: true }),
+    quote: new FormControl(null, { nonNullable: true }),
     searchTerm: new FormControl('', { nonNullable: true }),
   });
 

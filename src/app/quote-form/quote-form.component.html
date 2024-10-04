@@ -3,9 +3,9 @@
     <h2>Text</h2>
     <div id="previewArea">
         <h1 id="previewHeadline" [ngStyle]="{color: this.motivationalForm.controls.color.value}">
-            {{this.motivationalForm.controls.headline.value}}
+            {{this.motivationalForm.controls.headline.value ?? "- Headline -"}}
         </h1>
-        <h5 id="previewParagraph">{{this.motivationalForm.controls.quote.value}}</h5>
+        <h5 id="previewParagraph">{{this.motivationalForm.controls.quote.value ?? "- Quote or Paragraph -"}}</h5>
     </div>
     <mat-form-field>
         <mat-label>Headline</mat-label>
