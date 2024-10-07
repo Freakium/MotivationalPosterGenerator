@@ -110,6 +110,10 @@ svg.material-icons:not(:last-child) {
     margin-left: 60px;
 }
 
+.icon-background {
+    border-radius: 50%;
+}
+
 svg#rocket {
     width: 80px;
     position: absolute;
@@ -226,6 +230,21 @@ svg#clouds {
     width: 1920px;
 }
 
+#topIcon {
+    margin: 0 1rem;
+    padding: 0.5rem;
+    background-color: #673ab7;
+}
+
+#instructionIcon {
+    padding: 1.75rem;
+    background-color: #dd0031;
+}
+
+#instructionIcon mat-icon {
+    transform: scale(2.5);
+}
+
 app-dialog-container {
     background-color: #000;
 }
@@ -246,19 +265,9 @@ app-dialog-container {
     .card.highlight-card span {
         margin-left: 72px;
     }
-
-    svg#rocket-smoke {
-        right: 120px;
-        transform: rotate(-5deg);
-    }
 }
 
 @media screen and (max-width: 575px) {
-    svg#rocket-smoke {
-        display: none;
-        visibility: hidden;
-    }
-
     .card.highlight-card {
         padding: 55px 16px;
     }
