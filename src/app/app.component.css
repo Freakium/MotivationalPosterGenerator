@@ -97,7 +97,7 @@ svg.material-icons:not(:last-child) {
 }
 
 .card.highlight-card {
-    background-color: #673ab7;
+    background-color: #1c1d75;
     color: white;
     font-weight: 600;
     border: none;
@@ -238,7 +238,7 @@ svg#clouds {
 
 #instructionIcon {
     padding: 1.75rem;
-    background-color: #dd0031;
+    background-color: #673ab7;
 }
 
 #instructionIcon mat-icon {
