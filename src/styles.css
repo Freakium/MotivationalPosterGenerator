@@ -8,5 +8,6 @@ body {
 body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
-    background-color: #bbd7f0;
+    background: linear-gradient(#266fb1, #bbd7f0);
+    background-attachment: fixed;
 }
