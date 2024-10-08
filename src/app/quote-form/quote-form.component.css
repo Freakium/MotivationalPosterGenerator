@@ -15,6 +15,12 @@ textarea {
     box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
 }
 
+.quoteText {
+    font-family: 'Times New Roman', Times, Garamond, serif !important;
+    color: #fff;
+    margin-bottom: 0;
+}
+
 .warningText {
     color: #e43646;
     font-weight: 700;
@@ -26,7 +32,6 @@ textarea {
 }
 
 #previewArea {
-    height: 64px;
     background-color: #000;
     margin-bottom: 1rem;
     text-align: center;
@@ -37,11 +42,6 @@ textarea {
     font-family: 'Times New Roman', Times, Garamond, serif !important;
     text-transform: uppercase;
     margin-bottom: 0;
-}
-
-#previewParagraph {
-    font-family: 'Times New Roman', Times, Garamond, serif !important;
-    color: #fff;
 }
 
 #imageGrid {

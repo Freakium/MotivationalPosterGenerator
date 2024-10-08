@@ -9,16 +9,18 @@ import html2canvas from 'html2canvas';
 })
 export class QuoteFormDialogComponent {
   imgSrc: string | undefined;
-  headline: string | undefined;
   color: string | undefined;
+  headline: string | undefined;
   quoteText: string | undefined;
+  author: string | undefined;
   isDark: boolean | undefined;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
     this.imgSrc = data.imgSrc;
-    this.headline = data.headline;
     this.color = data.color;
+    this.headline = data.headline;
     this.quoteText = data.quoteText;
+    this.author = data.author ? `- ${data.author} -` : "";
     this.isDark = true;
   }
 

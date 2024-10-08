@@ -22,6 +22,7 @@ export class QuoteFormComponent {
     headline: new FormControl(null, { nonNullable: true }),
     color: new FormControl('#225544', { nonNullable: true }),
     quote: new FormControl(null, { nonNullable: true }),
+    author: new FormControl(null, { nonNullable: true }),
     searchTerm: new FormControl('', { nonNullable: true }),
   });
 
@@ -69,9 +70,10 @@ export class QuoteFormComponent {
       data: {
         imgSrc: srcAttr.nodeValue,
         isLandscape: this.motivationalForm.controls.orientationSelect.value === "landscape",
-        headline: this.motivationalForm.controls.headline.value,
         color: this.motivationalForm.controls.color.value,
-        quoteText: this.motivationalForm.controls.quote.value
+        headline: this.motivationalForm.controls.headline.value,
+        quoteText: this.motivationalForm.controls.quote.value,
+        author: this.motivationalForm.controls.author.value
       }
     });
   }

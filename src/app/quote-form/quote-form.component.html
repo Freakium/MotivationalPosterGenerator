@@ -2,10 +2,11 @@
 <form class="card" [formGroup]="motivationalForm" (ngSubmit)="onSubmit()">
     <h2>Text</h2>
     <div id="previewArea">
-        <h1 id="previewHeadline" [ngStyle]="{color: this.motivationalForm.controls.color.value}">
-            {{this.motivationalForm.controls.headline.value ?? "- Headline -"}}
-        </h1>
-        <h5 id="previewParagraph">{{this.motivationalForm.controls.quote.value ?? "- Quote or Paragraph -"}}</h5>
+        <h2 id="previewHeadline" [ngStyle]="{color: this.motivationalForm.controls.color.value}">
+            {{this.motivationalForm.controls.headline.value ? this.motivationalForm.controls.headline.value : "- Headline -"}}
+        </h2>
+        <h5 class="quoteText">{{this.motivationalForm.controls.quote.value ? this.motivationalForm.controls.quote.value : "- Quote or Paragraph -"}}</h5>
+        <h5 class="quoteText"><em>{{this.motivationalForm.controls.author.value ? '- ' + this.motivationalForm.controls.author.value + ' -'  : "- Attribution -"}}</em></h5>
     </div>
     <mat-form-field>
         <mat-label>Headline Colour</mat-label>
@@ -18,6 +19,10 @@
     <mat-form-field>
         <mat-label>Motivational Quote / Paragraph</mat-label>
         <textarea matInput placeholder="This can be a full paragraph." formControlName="quote"></textarea>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Attribution</mat-label>
+        <input matInput placeholder="Name of author." formControlName="author">
     </mat-form-field>
 
     <h2>Image Search</h2>

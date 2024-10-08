@@ -38,7 +38,7 @@ h1 {
     text-transform: uppercase;
 }
 
-pre {
+.quoteText {
     font-family: 'Times New Roman', Times, Garamond, serif !important;
     font-weight: 500;
     white-space: pre-wrap;
