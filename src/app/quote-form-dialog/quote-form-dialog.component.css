@@ -34,8 +34,12 @@ img {
 h1 {
     font-family: 'Times New Roman', Times, Garamond, serif !important;
     font-size: 3vw;
-    color: #254;
     text-transform: uppercase;
+    margin-bottom: 0;
+}
+
+h1 hr {
+    margin: 0.6rem 0 0.4rem;
 }
 
 .quoteText {
@@ -48,6 +52,6 @@ h1 {
 
 @media screen and (max-width: 767px) {
     h1 {
-        font-size: 3vh;
+        font-size: 4vh;
     }
 }
