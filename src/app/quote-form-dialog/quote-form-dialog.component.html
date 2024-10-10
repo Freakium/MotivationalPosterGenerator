@@ -7,10 +7,7 @@
 <mat-dialog-content id="motivCanvas" [ngStyle]="{backgroundColor: this.isDark ? '#000' : '#fff'}">
   <div id="displayArea">
     <img src="{{imgSrc}}" [ngStyle]="{borderColor: this.color}" (click)="createPNG()" title="Click to generate image" />
-    <h1 [ngStyle]="{color: this.color}">
-      {{headline}}
-      <hr [ngStyle]="{color: this.color}">
-    </h1>
+    <h1 [ngStyle]="{color: this.color}">{{headline}}</h1>
     <pre class="quoteText" [ngStyle]="{color: this.isDark ? '#fff' : '#000'}">{{quoteText}}</pre>
     <h5 class="quoteText" [ngStyle]="{color: this.isDark ? '#fff' : '#000'}"><em>{{author}}</em></h5>
   </div>

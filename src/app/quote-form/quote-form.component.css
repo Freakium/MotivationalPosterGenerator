@@ -40,6 +40,7 @@ textarea {
 
 #previewHeadline {
     font-family: 'Times New Roman', Times, Garamond, serif !important;
+    text-decoration-line: underline;
     text-transform: uppercase;
     margin-bottom: 0;
 }

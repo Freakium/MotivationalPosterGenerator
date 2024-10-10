@@ -23,8 +23,8 @@ mat-dialog-content {
 }
 
 img {
-    padding: 1rem;
-    margin-bottom: 1rem;
+    border: 3px solid;
+    padding: 0.75rem;
     max-width: 70vw;
     max-height: 75vh;
     cursor: pointer;
@@ -32,13 +32,12 @@ img {
 
 h1 {
     font-family: 'Times New Roman', Times, Garamond, serif !important;
-    font-size: 3vw;
+    font-size: 5vw;
+    text-decoration-line: underline;
+    text-decoration-thickness: 3px;
     text-transform: uppercase;
+    line-height: normal;
     margin-bottom: 0;
-}
-
-h1 hr {
-    margin: 0.6rem 0 0.4rem;
 }
 
 .quoteText {
@@ -51,6 +50,7 @@ h1 hr {
 
 @media screen and (max-width: 767px) {
     h1 {
-        font-size: 4vh;
+        font-size: 5vh;
+        margin-bottom: 1rem;
     }
 }

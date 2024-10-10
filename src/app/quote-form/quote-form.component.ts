@@ -35,7 +35,7 @@ export class QuoteFormComponent {
     let headline = this.motivationalForm.controls.headline.value;
     let quoteText = this.motivationalForm.controls.quote.value;
     if (!headline && !quoteText) {
-      this.warningText = `Please enter a headline or quote text.`;
+      this.warningText = `Please enter a headline or motivational text.`;
       return;
     }
     // make sure query exists
