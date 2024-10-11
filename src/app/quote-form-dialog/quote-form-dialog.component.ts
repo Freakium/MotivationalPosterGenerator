@@ -17,8 +17,8 @@ export class QuoteFormDialogComponent {
   quoteText: string | undefined;
   author: string | undefined;
   isDark: boolean | undefined;
-  isFancy: boolean | undefined;
   isLandscape: boolean | undefined;
+  fancyInt: number;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
     this.imgSrc = data.imgSrc;
@@ -27,7 +27,7 @@ export class QuoteFormDialogComponent {
     this.quoteText = data.quoteText;
     this.author = data.author ? `- ${data.author} -` : "";
     this.isDark = true;
-    this.isFancy = false;
+    this.fancyInt = 0;
     
     this.setHeadline();
   }
@@ -37,7 +37,7 @@ export class QuoteFormDialogComponent {
   }
  
   toggleFancy() {
-    this.isFancy = !this.isFancy;
+    this.fancyInt = (this.fancyInt+1) % 3;
     this.setHeadline();
   }
 
@@ -58,24 +58,27 @@ export class QuoteFormDialogComponent {
   }
 
   /**
-   * Sets the headline to be full underline or dropcapped with middle underlined.
-   * @param isFancy Whether or not headline is fancy
-   * @param text Full headline text
+   * Sets the headline to be no underline, full underline, or dropcapped with middle underlined.
    */
   private setHeadline() {
     let text = this.headline ?? "";
     this.isLandscape = window.screen.availHeight <= window.screen.availWidth;
 
-    if(this.isFancy) {
-      let indexEnd = text.length-1;
-      this.headlinePrefix = text.substring(0,1);
-      this.headlineBody = text.substring(1, indexEnd);
-      this.headlineSuffix = text.substring(indexEnd);
-    }
-    else {
-      this.headlinePrefix = "";
-      this.headlineBody = text;
-      this.headlineSuffix = "";
+    switch(this.fancyInt) {
+      // No underline
+      case 0:
+      // Underlined
+      case 1:
+        this.headlinePrefix = "";
+        this.headlineBody = text;
+        this.headlineSuffix = "";
+        break;
+      // Dropcapped first and last character
+      default:
+        let indexEnd = text.length-1;
+        this.headlinePrefix = text.substring(0,1);
+        this.headlineBody = text.substring(1, indexEnd);
+        this.headlineSuffix = text.substring(indexEnd);
     }
   }
 }

@@ -39,7 +39,6 @@ img {
 }
 
 .headlineBody {
-    text-decoration-line: underline;
     text-decoration-thickness: 3px;
 }
 
@@ -65,5 +64,9 @@ img {
     .headlineDropcap {
         font-size: max(7vh, 50px);
         margin-top: -1vh;
+    }
+
+    #quoteArea {
+        margin-top: 1rem;
     }
 }
