@@ -43,7 +43,7 @@
 
 <div id="imageArea" class="card" *ngIf="imageList">
     <h2>Select an Image</h2>
-    <mat-grid-list id="imageGrid" cols="2" gutterSize="5px">
+    <mat-grid-list id="imageGrid" cols="2" gutterSize="5px" rowHeight="4:3">
         <span *ngIf="!imageList.photos.length">No results found.</span>
         <mat-grid-tile *ngFor="let i of imageList.photos">
             <img style="cursor:pointer" [src]="i.src.medium" (click)="searchImages($event)"
