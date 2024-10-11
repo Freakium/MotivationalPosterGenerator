@@ -6,7 +6,7 @@ mat-dialog-content {
     max-height: 100%;
 }
 
-#toggleModeBtn {
+.toggleModeBtns {
     position: absolute;
 }
 
@@ -30,14 +30,22 @@ img {
     cursor: pointer;
 }
 
-h1 {
+.mainHeader {
+    display: flex;
     font-family: 'Times New Roman', Times, Garamond, serif !important;
     font-size: max(5vw, 36px);
-    text-decoration-line: underline;
-    text-decoration-thickness: 3px;
     text-transform: uppercase;
     line-height: normal;
-    margin-bottom: 0;
+}
+
+.headlineBody {
+    text-decoration-line: underline;
+    text-decoration-thickness: 3px;
+}
+
+.headlineDropcap {
+    font-size: max(7vw, 50px);
+    margin-top: -1vw;
 }
 
 .quoteText {
@@ -52,5 +60,10 @@ h1 {
     h1 {
         font-size: max(5vh, 36px);
         margin-bottom: 1rem;
+    }
+
+    .headlineDropcap {
+        font-size: max(7vh, 50px);
+        margin-top: -1vh;
     }
 }

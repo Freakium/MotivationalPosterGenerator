@@ -11,21 +11,34 @@ export class QuoteFormDialogComponent {
   imgSrc: string | undefined;
   color: string | undefined;
   headline: string | undefined;
+  headlinePrefix: string | undefined;
+  headlineBody: string | undefined;
+  headlineSuffix: string | undefined;
   quoteText: string | undefined;
   author: string | undefined;
   isDark: boolean | undefined;
+  isFancy: boolean | undefined;
+  isLandscape: boolean | undefined;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
     this.imgSrc = data.imgSrc;
     this.color = data.color;
-    this.headline = data.headline;
+    this.headline = data.headline.trim();
     this.quoteText = data.quoteText;
     this.author = data.author ? `- ${data.author} -` : "";
     this.isDark = true;
+    this.isFancy = false;
+    
+    this.setHeadline();
   }
 
   toggleMode() {
     this.isDark = !this.isDark;
+  }
+ 
+  toggleFancy() {
+    this.isFancy = !this.isFancy;
+    this.setHeadline();
   }
 
   createPNG() {
@@ -42,5 +55,27 @@ export class QuoteFormDialogComponent {
       link.setAttribute('href', canvas.toDataURL("image/png").replace("image/png", "image/octet-stream"));
       link.click();
     });
+  }
+
+  /**
+   * Sets the headline to be full underline or dropcapped with middle underlined.
+   * @param isFancy Whether or not headline is fancy
+   * @param text Full headline text
+   */
+  private setHeadline() {
+    let text = this.headline ?? "";
+    this.isLandscape = window.screen.availHeight <= window.screen.availWidth;
+
+    if(this.isFancy) {
+      let indexEnd = text.length-1;
+      this.headlinePrefix = text.substring(0,1);
+      this.headlineBody = text.substring(1, indexEnd);
+      this.headlineSuffix = text.substring(indexEnd);
+    }
+    else {
+      this.headlinePrefix = "";
+      this.headlineBody = text;
+      this.headlineSuffix = "";
+    }
   }
 }
