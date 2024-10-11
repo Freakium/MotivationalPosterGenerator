@@ -61,8 +61,17 @@ img {
         margin-bottom: 1rem;
     }
 
+    img {
+        border: 2px solid;
+        padding: 0.5rem;
+    }
+
+    .headlineBody {
+        text-decoration-thickness: 2px;
+    }
+
     .headlineDropcap {
-        font-size: max(7vh, 50px);
+        font-size: max(6vh, 50px);
         margin-top: -1vh;
     }
 

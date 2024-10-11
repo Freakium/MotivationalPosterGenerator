@@ -25,7 +25,11 @@
         <input matInput placeholder="Name of author." formControlName="author">
     </mat-form-field>
 
-    <h2>Image Search</h2>
+    <h2>Image Upload</h2>
+    <button type="button" mat-raised-button color="primary" (click)="fileInput.click()">Choose File</button>
+    <input hidden (click)="validateTextFields()" (change)="imageUpload($event)" #fileInput type="file" accept="image/*">
+
+    <h2 [ngStyle]="{marginTop: '1.5rem'}">Image Search</h2>
     <mat-radio-group aria-labelledby="example-radio-group-label" formControlName="orientationSelect">
         <mat-radio-button value="landscape">Landscape</mat-radio-button>
         <mat-radio-button value="portrait">Portrait</mat-radio-button>

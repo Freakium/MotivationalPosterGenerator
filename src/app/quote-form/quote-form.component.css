@@ -1,3 +1,7 @@
+h2 {
+    margin-bottom: 0;
+}
+
 mat-form-field {
     width: 100%;
 }
@@ -12,7 +16,7 @@ textarea {
     padding: 1rem;
     border: 1px solid #aaa;
     border-radius: 1rem;
-    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
 }
 
 .quoteText {
@@ -42,7 +46,6 @@ textarea {
     font-family: 'Times New Roman', Times, Garamond, serif !important;
     text-decoration-line: underline;
     text-transform: uppercase;
-    margin-bottom: 0;
 }
 
 #imageGrid {

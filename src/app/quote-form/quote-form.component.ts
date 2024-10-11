@@ -23,7 +23,8 @@ export class QuoteFormComponent {
     color: new FormControl('#225544', { nonNullable: true }),
     quote: new FormControl(null, { nonNullable: true }),
     author: new FormControl(null, { nonNullable: true }),
-    searchTerm: new FormControl('', { nonNullable: true }),
+
+    searchTerm: new FormControl('', { nonNullable: true })
   });
 
   onSubmit() {
@@ -32,19 +33,12 @@ export class QuoteFormComponent {
     let orientation = this.motivationalForm.controls.orientationSelect.value;
 
     // Validations for text fields
-    let headline = this.motivationalForm.controls.headline.value;
-    let quoteText = this.motivationalForm.controls.quote.value;
-    if (!headline && !quoteText) {
-      this.warningText = `Please enter a headline or motivational text.`;
-      return;
-    }
+    if (!this.validateTextFields()) return;
+
     // make sure query exists
-    else if (!query) {
+    if (!query) {
       this.warningText = `Please enter an image search term.`;
       return;
-    }
-    else {
-      this.warningText = "";
     }
 
     // set orientation to landscape if none selected
@@ -59,23 +53,68 @@ export class QuoteFormComponent {
       });
   }
 
+  imageUpload(event: any): void {
+    let imageFile = event.target.files[0];
+    let imageBlob = URL.createObjectURL(imageFile);
+
+    // check filetype
+    if (!imageFile.type.includes('image/')) {
+      this.warningText = "Please upload an image file.";
+      return;
+    }
+
+    if (imageBlob) {
+      this.warningText = "";
+
+      let image = new Image();
+      image.src = imageBlob;
+      image.onload = () => {
+        // get image orientation
+        let isLandscape = image.width >= image.height;
+
+        this.openImageDialog(imageBlob, isLandscape);
+      };
+    }
+    else {
+      this.warningText = "Cannot read file. Please choose another image file.";
+    }
+  }
+
   searchImages(event: { target: any; srcElement: any; currentTarget: any; }) {
     var target = event.target || event.srcElement || event.currentTarget;
     var srcAttr = target.attributes['data-imageurl'];
+    let isLandscape = this.motivationalForm.controls.orientationSelect.value === "landscape";
 
+    this.openImageDialog(srcAttr.nodeValue, isLandscape);
+  }
+
+  openImageDialog(image: string, isLandscape: boolean) {
     this.dialogRef.open(QuoteFormDialogComponent, {
       width: '100vw',
       height: '100vh',
       maxWidth: '100vw',
       data: {
-        imgSrc: srcAttr.nodeValue,
-        isLandscape: this.motivationalForm.controls.orientationSelect.value === "landscape",
+        isLandscape,
+        imgSrc: image,
         color: this.motivationalForm.controls.color.value,
         headline: this.motivationalForm.controls.headline.value,
         quoteText: this.motivationalForm.controls.quote.value,
         author: this.motivationalForm.controls.author.value
       }
     });
+  }
+
+  validateTextFields() {
+    let headline = this.motivationalForm.controls.headline.value;
+    let quoteText = this.motivationalForm.controls.quote.value;
+    if (!headline && !quoteText) {
+      this.warningText = `Please enter a headline or motivational text.`;
+      return false;
+    }
+    else {
+      this.warningText = "";
+      return true;
+    }
   }
 
   async getPageResults(url: string) {
