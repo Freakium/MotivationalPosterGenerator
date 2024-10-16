@@ -23,7 +23,7 @@ mat-dialog-content {
 }
 
 img {
-    border: 3px solid;
+    border: 3px;
     padding: 0.75rem;
     max-width: 85vw;
     max-height: 70vh;
@@ -62,7 +62,6 @@ img {
     }
 
     img {
-        border: 2px solid;
         padding: 0.5rem;
     }
 
