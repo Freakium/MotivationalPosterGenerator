@@ -10,6 +10,7 @@ import html2canvas from 'html2canvas';
 export class QuoteFormDialogComponent {
   imgSrc: string | undefined;
   color: string | undefined;
+  border: string | 'solid';
   headline: string | undefined;
   headlinePrefix: string | undefined;
   headlineBody: string | undefined;
@@ -23,9 +24,10 @@ export class QuoteFormDialogComponent {
   constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
     this.imgSrc = data.imgSrc;
     this.color = data.color;
+    this.border = data.border;
     this.headline = data.headline.trim();
     this.quoteText = data.quoteText;
-    this.author = data.author ? `- ${data.author} -` : "";
+    this.author = data.author ? `- ${data.author.trim()} -` : "";
     this.isDark = true;
     this.fancyInt = 0;
     

@@ -11,7 +11,7 @@
 </button>
 <mat-dialog-content id="motivCanvas" [ngStyle]="{backgroundColor: this.isDark ? '#000' : '#fff'}">
   <div id="displayArea">
-    <img src="{{imgSrc}}" [ngStyle]="{borderColor: this.color}" (click)="createPNG()" title="Click to generate image" />
+    <img src="{{imgSrc}}" [ngStyle]="{borderColor: this.color, borderStyle: this.border}" (click)="createPNG()" title="Click to generate image" />
     <div class="mainHeader" [ngStyle]="{'color': this.color, 'margin-bottom': this.fancyInt < 2 ? '0' : (this.isLandscape ? '-1vw' : '-1vh')}">
       <span class="headlineDropcap" *ngIf="headlinePrefix">{{headlinePrefix}}</span>
       <span class="headlineBody" [ngStyle]="{'text-decoration-line': this.fancyInt === 0 ? 'none' : 'underline'}">{{headlineBody}}</span>

@@ -36,10 +36,20 @@ textarea {
 }
 
 #previewArea {
+    display: flex;
+    flex-direction: column;
     background-color: #000;
     margin-bottom: 1rem;
     text-align: center;
     user-select: none;
+}
+
+#previewBorder {
+    width: 80%;
+    height: 5px;
+    margin-top: 0.5rem;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #previewHeadline {

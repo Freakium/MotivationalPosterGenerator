@@ -2,6 +2,9 @@
 <form class="card" [formGroup]="motivationalForm" (ngSubmit)="onSubmit()">
     <h2>Text</h2>
     <div id="previewArea">
+        <div id="previewBorder"
+            [ngStyle]="{color: this.motivationalForm.controls.color.value, borderStyle: this.motivationalForm.controls.border.value}">
+        </div>
         <h2 id="previewHeadline" [ngStyle]="{color: this.motivationalForm.controls.color.value}">
             {{this.motivationalForm.controls.headline.value ? this.motivationalForm.controls.headline.value : "- Headline -"}}
         </h2>
@@ -9,20 +12,26 @@
         <h5 class="quoteText"><em>{{this.motivationalForm.controls.author.value ? '- ' + this.motivationalForm.controls.author.value + ' -'  : "- Attribution -"}}</em></h5>
     </div>
     <mat-form-field>
+        <mat-label>Border Style</mat-label>
+        <mat-select id="borderSelect" formControlName="border">
+            <mat-option *ngFor="let i of borderStyles" value="{{i}}">{{i}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field>
         <mat-label>Headline Colour</mat-label>
         <input matInput type="color" formControlName="color">
     </mat-form-field>
     <mat-form-field>
         <mat-label>Headline</mat-label>
-        <input matInput placeholder="This is usually a single word." formControlName="headline">
+        <input matInput placeholder="This is usually a single word" formControlName="headline">
     </mat-form-field>
     <mat-form-field>
         <mat-label>Motivational Quote / Paragraph</mat-label>
-        <textarea matInput placeholder="This can be a full paragraph." formControlName="quote"></textarea>
+        <textarea matInput placeholder="This can be a full paragraph" formControlName="quote"></textarea>
     </mat-form-field>
     <mat-form-field>
         <mat-label>Attribution</mat-label>
-        <input matInput placeholder="Name of author." formControlName="author">
+        <input matInput placeholder="Name of author" formControlName="author">
     </mat-form-field>
 
     <h2>Image Upload</h2>
@@ -37,7 +46,7 @@
 
     <mat-form-field>
         <mat-label>Search for images</mat-label>
-        <input matInput placeholder="Search Term" formControlName="searchTerm" />
+        <input matInput placeholder="Search..." formControlName="searchTerm" />
     </mat-form-field>
 
     <button mat-raised-button color="primary" type="submit" [disabled]="!motivationalForm.valid">Search</button>
@@ -47,7 +56,7 @@
 
 <div id="imageArea" class="card" *ngIf="imageList">
     <h2>Select an Image</h2>
-    <mat-grid-list id="imageGrid" cols="2" gutterSize="5px" rowHeight="4:3">
+    <mat-grid-list id="imageGrid" cols="2" gutterSize="5px" rowHeight="8:5">
         <span *ngIf="!imageList.photos.length">No results found.</span>
         <mat-grid-tile *ngFor="let i of imageList.photos">
             <img style="cursor:pointer" [src]="i.src.medium" (click)="searchImages($event)"

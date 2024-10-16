@@ -13,13 +13,26 @@ export class QuoteFormComponent {
   private clientKey = "M3mCPlqVebPtriAepk0o22IS4zza0VYV0Ajn5neHANNUZTNxTaciLZnN";
   imageList: any;
   warningText: any;
+  borderStyles: string[];
 
-  constructor(private dialogRef: MatDialog) { }
+  constructor(private dialogRef: MatDialog) {
+    this.borderStyles = [
+      'Solid',
+      'Double',
+      'Dashed',
+      'Dotted',
+      'Groove',
+      'Ridge',
+      'Inset',
+      'Outset'
+    ];
+  }
 
   motivationalForm = new FormGroup({
     orientationSelect: new FormControl(
       window.screen.availHeight <= window.screen.availWidth ? "landscape" : "portrait", { nonNullable: true }),
     headline: new FormControl(null, { nonNullable: true }),
+    border: new FormControl('Solid', { nonNullable: true }),
     color: new FormControl('#225544', { nonNullable: true }),
     quote: new FormControl(null, { nonNullable: true }),
     author: new FormControl(null, { nonNullable: true }),
@@ -97,6 +110,7 @@ export class QuoteFormComponent {
         isLandscape,
         imgSrc: image,
         color: this.motivationalForm.controls.color.value,
+        border: this.motivationalForm.controls.border.value,
         headline: this.motivationalForm.controls.headline.value,
         quoteText: this.motivationalForm.controls.quote.value,
         author: this.motivationalForm.controls.author.value

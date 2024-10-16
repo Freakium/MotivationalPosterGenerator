@@ -12,6 +12,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
 import { QuoteFormComponent } from './quote-form/quote-form.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -39,6 +40,7 @@ import { QuoteFormDialogComponent } from './quote-form-dialog/quote-form-dialog.
     MatIconModule,
     MatInputModule,
     MatRadioModule,
+    MatSelectModule,
     ReactiveFormsModule
   ],
   providers: [],
