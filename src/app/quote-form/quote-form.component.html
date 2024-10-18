@@ -1,6 +1,6 @@
 <!-- User Input -->
 <form class="card" [formGroup]="motivationalForm" (ngSubmit)="onSubmit()">
-    <h2>Text</h2>
+    <h2>Preview</h2>
     <div id="previewArea">
         <div id="previewBorder"
             [ngStyle]="{color: this.motivationalForm.controls.color.value, borderStyle: this.motivationalForm.controls.border.value}">
@@ -11,6 +11,7 @@
         <h5 class="quoteText">{{this.motivationalForm.controls.quote.value ? this.motivationalForm.controls.quote.value : "- Quote or Paragraph -"}}</h5>
         <h5 class="quoteText"><em>{{this.motivationalForm.controls.author.value ? '- ' + this.motivationalForm.controls.author.value + ' -'  : "- Attribution -"}}</em></h5>
     </div>
+    <h2>Text</h2>
     <mat-form-field>
         <mat-label>Border Style</mat-label>
         <mat-select id="borderSelect" formControlName="border">

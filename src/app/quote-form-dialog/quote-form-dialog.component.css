@@ -73,8 +73,4 @@ img {
         font-size: max(6vh, 50px);
         margin-top: -1vh;
     }
-
-    #quoteArea {
-        margin-top: 1rem;
-    }
 }

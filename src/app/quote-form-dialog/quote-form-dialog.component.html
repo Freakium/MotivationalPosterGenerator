@@ -17,7 +17,7 @@
       <span class="headlineBody" [ngStyle]="{'text-decoration-line': this.fancyInt === 0 ? 'none' : 'underline'}">{{headlineBody}}</span>
       <span class="headlineDropcap" *ngIf="headlineSuffix">{{headlineSuffix}}</span>
     </div>
-    <pre id="quoteArea" class="quoteText" [ngStyle]="{color: this.isDark ? '#fff' : '#000'}">{{quoteText}}</pre>
+    <pre class="quoteText" [ngStyle]="{color: this.isDark ? '#fff' : '#000'}">{{quoteText}}</pre>
     <h5 class="quoteText" [ngStyle]="{color: this.isDark ? '#fff' : '#000'}"><em>{{author}}</em></h5>
   </div>
 </mat-dialog-content>
