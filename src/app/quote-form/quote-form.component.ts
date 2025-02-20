@@ -85,7 +85,7 @@ export class QuoteFormComponent {
         // get image orientation
         let isLandscape = image.width >= image.height;
 
-        this.openImageDialog(imageBlob, isLandscape);
+        this.openImageDialog(imageBlob, "", "", "", "", isLandscape);
       };
     }
     else {
@@ -95,13 +95,22 @@ export class QuoteFormComponent {
 
   searchImages(event: { target: any; srcElement: any; currentTarget: any; }) {
     var target = event.target || event.srcElement || event.currentTarget;
-    var srcAttr = target.attributes['data-imageurl'];
+    var srcAttr = target.attributes['data-imageURL'].nodeValue;
+    var title = target.attributes['data-title'].nodeValue;
+    var titleURL = target.attributes['data-titleURL'].nodeValue;
+    var photographer = target.attributes['data-photographer'].nodeValue;
+    var photographerURL = target.attributes['data-photographerURL'].nodeValue;
     let isLandscape = this.motivationalForm.controls.orientationSelect.value === "landscape";
 
-    this.openImageDialog(srcAttr.nodeValue, isLandscape);
+    // remove ending period
+    if(title.slice(-1) === '.') {
+      title = title.slice(0, -1);
+    }
+
+    this.openImageDialog(srcAttr, title, titleURL, photographer, photographerURL, isLandscape);
   }
 
-  openImageDialog(image: string, isLandscape: boolean) {
+  openImageDialog(image: string, title: string, titleURL: string, photographer: string, photographerURL: string, isLandscape: boolean) {
     this.dialogRef.open(QuoteFormDialogComponent, {
       width: '100vw',
       height: '100vh',
@@ -109,6 +118,10 @@ export class QuoteFormComponent {
       data: {
         isLandscape,
         imgSrc: image,
+        imgTitle: title,
+        imgTitleURL: titleURL,
+        imgPhotographer: photographer,
+        imgPhotographerURL: photographerURL,
         color: this.motivationalForm.controls.color.value,
         border: this.motivationalForm.controls.border.value,
         headline: this.motivationalForm.controls.headline.value,

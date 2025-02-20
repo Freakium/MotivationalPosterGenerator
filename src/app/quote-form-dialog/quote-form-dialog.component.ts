@@ -9,6 +9,12 @@ import html2canvas from 'html2canvas';
 })
 export class QuoteFormDialogComponent {
   imgSrc: string | undefined;
+  imgTitle: string | undefined;
+  imgTitleURL: string | undefined;
+  imgPhotographer: string | undefined;
+  imgPhotographerURL: string | undefined;
+  attribution: string | undefined;
+  showAttribution: boolean | undefined;
   color: string | undefined;
   border: string | 'solid';
   headline: string | undefined;
@@ -22,7 +28,14 @@ export class QuoteFormDialogComponent {
   fancyInt: number;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
+    // image info
     this.imgSrc = data.imgSrc;
+    this.imgTitle = data.imgTitle;
+    this.imgTitleURL = data.imgTitleURL;
+    this.imgPhotographer = data.imgPhotographer;
+    this.imgPhotographerURL = data.imgPhotographerURL;
+
+    // test info
     this.color = data.color;
     this.border = data.border;
     this.headline = data.headline.trim();
@@ -41,6 +54,23 @@ export class QuoteFormDialogComponent {
   toggleFancy() {
     this.fancyInt = (this.fancyInt+1) % 3;
     this.setHeadline();
+  }
+
+  toggleAttribution() {
+    this.showAttribution = !this.showAttribution;
+
+    if(this.showAttribution) {
+      if(!this.imgTitle || !this.imgPhotographer)
+        this.attribution = "";
+      else {
+        let titleLink = `<a href="${this.imgTitleURL}" target="_blank">${this.imgTitle}</a>`;
+        let photographerLink = `<a href="${this.imgPhotographerURL}" target="_blank">${this.imgPhotographer}</a>`;
+        this.attribution = `${titleLink} by ${photographerLink}`;
+      }
+    }
+    else {
+      this.attribution = "";
+    }
   }
 
   createPNG() {

@@ -60,8 +60,13 @@
     <mat-grid-list id="imageGrid" cols="2" gutterSize="5px" rowHeight="8:5">
         <span *ngIf="!imageList.photos.length">No results found.</span>
         <mat-grid-tile *ngFor="let i of imageList.photos">
-            <img style="cursor:pointer" [src]="i.src.medium" (click)="searchImages($event)"
-                [attr.data-imageURL]="i.src.original">
+            <img style="cursor:pointer" [src]="i.src.medium"
+                [attr.data-imageURL]="i.src.original"
+                [attr.data-title]="i.alt"
+                [attr.data-titleURL]="i.url"
+                [attr.data-photographer]="i.photographer"
+                [attr.data-photographerURL]="i.photographer_url"
+                (click)="searchImages($event)">
         </mat-grid-tile>
     </mat-grid-list>
 

@@ -2,24 +2,6 @@ mat-dialog-content {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100%;
-    max-height: 100%;
-}
-
-.toggleModeBtns {
-    position: absolute;
-}
-
-#closeDialogBtn {
-    position: absolute;
-    right: 0;
-}
-
-#displayArea {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
 }
 
 img {
@@ -53,6 +35,49 @@ img {
     white-space: pre-wrap;
     max-width: 100%;
     margin: 0;
+}
+
+.toggleModeBtns {
+    position: absolute;
+}
+
+#attribution {
+    position: absolute;
+    text-align: center;
+    font-size: 0.8em;
+    right: 20px;
+    bottom: 5px;
+    color: #888;
+    a {
+        font-weight: bold;
+        text-decoration: none;
+        color: #888;
+    }
+    a:focus, a:hover, a:active {
+        text-decoration: underline;
+    }
+}
+
+#attribution a {
+    text-decoration: none;
+    color: rebeccapurple;
+}
+
+#closeDialogBtn {
+    position: absolute;
+    right: 0;
+}
+
+#displayArea {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+#motivCanvas {
+    height: 100%;
+    max-height: 100%;
 }
 
 @media screen and (max-width: 767px) {
