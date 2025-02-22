@@ -59,14 +59,10 @@ export class QuoteFormDialogComponent {
   toggleAttribution() {
     this.showAttribution = !this.showAttribution;
 
-    if(this.showAttribution) {
-      if(!this.imgTitle || !this.imgPhotographer)
-        this.attribution = "";
-      else {
-        let titleLink = `<a href="${this.imgTitleURL}" target="_blank">${this.imgTitle}</a>`;
-        let photographerLink = `<a href="${this.imgPhotographerURL}" target="_blank">${this.imgPhotographer}</a>`;
-        this.attribution = `${titleLink} by ${photographerLink}`;
-      }
+    if(this.showAttribution && this.imgTitle && this.imgPhotographer) {
+      let titleLink = `<a href="${this.imgTitleURL}" target="_blank">${this.imgTitle}</a>`;
+      let photographerLink = `<a href="${this.imgPhotographerURL}" target="_blank">${this.imgPhotographer}</a>`;
+      this.attribution = `${titleLink} by ${photographerLink}`;
     }
     else {
       this.attribution = "";

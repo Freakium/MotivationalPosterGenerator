@@ -5,7 +5,7 @@
   <button mat-icon-button aria-label="toggle fancy headline" title="toggle headline style" (click)="toggleFancy()">
     <mat-icon [ngStyle]="{color: this.isDark ? '#fff' : '#000'}">format_underlined</mat-icon>
   </button>
-  <button mat-icon-button aria-label="toggle attribution" title="toggle attribution" (click)="toggleAttribution()">
+  <button mat-icon-button aria-label="toggle attribution" title="toggle attribution" *ngIf="imgTitle && imgPhotographer" (click)="toggleAttribution()">
     <mat-icon [ngStyle]="{color: this.isDark ? '#fff' : '#000'}">info_outline</mat-icon>
   </button>
 </div>
