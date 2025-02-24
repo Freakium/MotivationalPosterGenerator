@@ -59,8 +59,11 @@ export class QuoteFormComponent {
 
     client.photos.search({ query, orientation, per_page: 18 })
       .then(data => {
-        // save list if results
+        // save list of results
         this.imageList = data;
+
+        // scroll view to image list
+        document.getElementById('imageArea')?.scrollIntoView({behavior: 'smooth'});
 
         console.log("Search Results:", data);
       });
@@ -158,5 +161,8 @@ export class QuoteFormComponent {
     }
 
     this.imageList = await response.json();
+
+    // scroll view to image list
+    document.getElementById('imageArea')?.scrollIntoView({behavior: 'smooth'});
   }
 }
