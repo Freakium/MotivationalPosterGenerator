@@ -15,9 +15,9 @@
 <mat-dialog-content id="motivCanvas" [ngStyle]="{backgroundColor: this.isDark ? '#000' : '#fff'}">
   <div id="displayArea">
     <img src="{{imgSrc}}" [ngStyle]="{borderColor: this.color, borderStyle: this.border}" (click)="createPNG()" title="Click to generate image" />
-    <div class="mainHeader" [ngStyle]="{'color': this.color, 'margin-bottom': this.fancyInt < 2 ? '0' : (this.isLandscape ? '-1vw' : '-1vh')}">
+    <div class="mainHeader" [ngStyle]="{'color': this.color, 'margin-bottom': this.fancyInt < 4 ? '0' : (this.isLandscape ? '-1vw' : '-1vh')}">
       <span class="headlineDropcap" *ngIf="headlinePrefix">{{headlinePrefix}}</span>
-      <span class="headlineBody" [ngStyle]="{'text-decoration-line': this.fancyInt === 0 ? 'none' : 'underline'}">{{headlineBody}}</span>
+      <span class="headlineBody" [ngStyle]="{'text-decoration-line': (this.fancyInt === 0 || this.fancyInt === 2) ? 'none' : 'underline'}">{{headlineBody}}</span>
       <span class="headlineDropcap" *ngIf="headlineSuffix">{{headlineSuffix}}</span>
     </div>
     <pre class="quoteText" [ngStyle]="{color: this.isDark ? '#fff' : '#000'}">{{quoteText}}</pre>

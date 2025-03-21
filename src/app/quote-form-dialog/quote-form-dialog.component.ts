@@ -52,7 +52,7 @@ export class QuoteFormDialogComponent {
   }
  
   toggleFancy() {
-    this.fancyInt = (this.fancyInt+1) % 3;
+    this.fancyInt = (this.fancyInt+1) % 5;
     this.setHeadline();
   }
 
@@ -99,6 +99,13 @@ export class QuoteFormDialogComponent {
       case 1:
         this.headlinePrefix = "";
         this.headlineBody = text;
+        this.headlineSuffix = "";
+        break;
+      // Dots before and after headline (underlined and not)
+      case 2:
+      case 3:
+        this.headlinePrefix = "";
+        this.headlineBody = `·${text}·`;
         this.headlineSuffix = "";
         break;
       // Dropcapped first and last character
