@@ -15,7 +15,7 @@ img {
 .mainHeader {
     display: flex;
     font-family: 'Times New Roman', Times, Garamond, serif !important;
-    font-size: max(5vw, 36px);
+    font-size: max(5vw, 12px);
     text-transform: uppercase;
     line-height: normal;
 }
@@ -81,11 +81,6 @@ img {
 }
 
 @media screen and (max-width: 767px) {
-    h1 {
-        font-size: max(5vh, 36px);
-        margin-bottom: 1rem;
-    }
-
     img {
         padding: 0.5rem;
     }

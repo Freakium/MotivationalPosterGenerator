@@ -24,7 +24,7 @@
     </mat-form-field>
     <mat-form-field>
         <mat-label>Headline</mat-label>
-        <input matInput placeholder="This is usually a single word" formControlName="headline">
+        <input matInput placeholder="This is usually a single word" formControlName="headline" [maxLength]="25">
     </mat-form-field>
     <mat-form-field>
         <mat-label>Motivational Quote / Paragraph</mat-label>
