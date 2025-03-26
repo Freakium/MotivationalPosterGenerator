@@ -14,7 +14,10 @@
 </button>
 <mat-dialog-content id="motivCanvas" [ngStyle]="{backgroundColor: this.isDark ? '#000' : '#fff'}">
   <div id="displayArea">
-    <img src="{{imgSrc}}" [ngStyle]="{borderColor: this.color, borderStyle: this.border}" (click)="createPNG()" title="Click to generate image" />
+    <div [ngStyle]="{position: 'relative'}">
+      <img src="{{imgSrc}}" [ngStyle]="{borderColor: this.color, borderStyle: this.border}" (click)="createPNG()" title="Click to generate image" />
+      <div class="attribution" [innerHTML]="attribution1"></div>
+    </div>
     <div class="mainHeader" [ngStyle]="{'color': this.color, 'margin-bottom': this.fancyInt < 4 ? '0' : (this.isLandscape ? '-1vw' : '-1vh')}">
       <span class="headlineDropcap" *ngIf="headlinePrefix">{{headlinePrefix}}</span>
       <span class="headlineBody" [ngStyle]="{'text-decoration-line': (this.fancyInt === 0 || this.fancyInt === 2) ? 'none' : 'underline'}">{{headlineBody}}</span>
@@ -24,5 +27,5 @@
     <h5 class="quoteText" [ngStyle]="{color: this.isDark ? '#fff' : '#000'}"><em>{{author}}</em></h5>
   </div>
 </mat-dialog-content>
-<div id="attribution" [innerHTML]="attribution"></div>
+<div id="attributionFrame" class="attribution" [innerHTML]="attribution2"></div>
 <a id="link" download="motivationalPoster.png"></a>

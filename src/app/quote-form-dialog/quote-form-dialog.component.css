@@ -25,8 +25,8 @@ img {
 }
 
 .headlineDropcap {
-    font-size: max(7vw, 50px);
-    margin-top: -1vw;
+    font-size: max(7vmax, 50px);
+    margin-top: -1vmax;
 }
 
 .quoteText {
@@ -41,12 +41,12 @@ img {
     position: absolute;
 }
 
-#attribution {
+.attribution {
     position: absolute;
     text-align: center;
-    font-size: 0.7em;
-    right: 20px;
-    bottom: 5px;
+    font-size: 0.6em;
+    right: 15px;
+    bottom: 4px;
     color: #888;
     a {
         font-weight: bold;
@@ -58,9 +58,10 @@ img {
     }
 }
 
-#attribution a {
-    text-decoration: none;
-    color: rebeccapurple;
+#attributionFrame {
+    font-size: 0.7em;
+    right: 20px;
+    bottom: 5px;
 }
 
 #closeDialogBtn {
@@ -85,12 +86,11 @@ img {
         padding: 0.5rem;
     }
 
-    .headlineBody {
-        text-decoration-thickness: 2px;
+    .attribution, #attributionFrame {
+        right: 0;
     }
 
-    .headlineDropcap {
-        font-size: max(6vh, 50px);
-        margin-top: -1vh;
+    .headlineBody {
+        text-decoration-thickness: 2px;
     }
 }

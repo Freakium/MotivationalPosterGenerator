@@ -13,8 +13,9 @@ export class QuoteFormDialogComponent {
   imgTitleURL: string | undefined;
   imgPhotographer: string | undefined;
   imgPhotographerURL: string | undefined;
-  attribution: string | undefined;
-  showAttribution: boolean | undefined;
+  attribution1: string | undefined;
+  attribution2: string | undefined;
+  attributionInt: number;
   color: string | undefined;
   border: string | 'solid';
   headline: string | undefined;
@@ -43,6 +44,7 @@ export class QuoteFormDialogComponent {
     this.author = data.author ? `- ${data.author.trim()} -` : "";
     this.isDark = true;
     this.fancyInt = 0;
+    this.attributionInt = 0;
     
     this.setHeadline();
   }
@@ -57,15 +59,30 @@ export class QuoteFormDialogComponent {
   }
 
   toggleAttribution() {
-    this.showAttribution = !this.showAttribution;
+    // check if attribution exists
+    if(!this.imgTitle || !this.imgPhotographer)
+      return;
 
-    if(this.showAttribution && this.imgTitle && this.imgPhotographer) {
-      let titleLink = `<a href="${this.imgTitleURL}" target="_blank">${this.imgTitle}</a>`;
-      let photographerLink = `<a href="${this.imgPhotographerURL}" target="_blank">${this.imgPhotographer}</a>`;
-      this.attribution = `${titleLink} by ${photographerLink}`;
-    }
-    else {
-      this.attribution = "";
+    this.attributionInt = (this.attributionInt+1) % 3;
+
+    let titleLink = `<a href="${this.imgTitleURL}" target="_blank">${this.imgTitle}</a>`;
+    let photographerLink = `<a href="${this.imgPhotographerURL}" target="_blank">${this.imgPhotographer}</a>`;
+
+    switch(this.attributionInt) {
+      // no attribution
+      case 0:
+        this.attribution1 = "";
+        this.attribution2 = "";
+        break;
+      // attribution in image
+      case 1:
+        this.attribution1 = `${titleLink} by ${photographerLink}`;
+        this.attribution2 = "";
+        break;
+      // attribution in frame
+      default:
+        this.attribution1 = "";
+        this.attribution2 = `${titleLink} by ${photographerLink}`
     }
   }
 
