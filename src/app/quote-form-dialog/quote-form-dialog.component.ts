@@ -63,7 +63,7 @@ export class QuoteFormDialogComponent {
     if(!this.imgTitle || !this.imgPhotographer)
       return;
 
-    this.attributionInt = (this.attributionInt+1) % 3;
+    this.attributionInt = (this.attributionInt+1) % 4;
 
     let titleLink = `<a href="${this.imgTitleURL}" target="_blank">${this.imgTitle}</a>`;
     let photographerLink = `<a href="${this.imgPhotographerURL}" target="_blank">${this.imgPhotographer}</a>`;
@@ -77,6 +77,11 @@ export class QuoteFormDialogComponent {
       // attribution in image
       case 1:
         this.attribution1 = `${titleLink} by ${photographerLink}`;
+        this.attribution2 = "";
+        break;
+      // attribution in image as author only
+      case 2:
+        this.attribution1 = `${photographerLink}`;
         this.attribution2 = "";
         break;
       // attribution in frame
