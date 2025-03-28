@@ -39,6 +39,7 @@ img {
 
 .toggleModeBtns {
     position: absolute;
+    z-index: 1;
 }
 
 .attribution {
@@ -67,6 +68,7 @@ img {
 
 #closeDialogBtn {
     position: absolute;
+    z-index: 1;
     right: 0;
 }
 
