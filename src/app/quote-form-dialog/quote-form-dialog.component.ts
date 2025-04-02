@@ -15,7 +15,6 @@ export class QuoteFormDialogComponent {
   imgPhotographerURL: string | undefined;
   attribution1: string | undefined;
   attribution2: string | undefined;
-  attributionInt: number;
   color: string | undefined;
   border: string | 'solid';
   headline: string | undefined;
@@ -26,7 +25,10 @@ export class QuoteFormDialogComponent {
   author: string | undefined;
   isDark: boolean | undefined;
   isLandscape: boolean | undefined;
-  fancyInt: number;
+  
+  // integer that keeps track of style display mode
+  attributionInt: number; // attribution
+  headlineInt: number;    // headline
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
     // image info
@@ -43,7 +45,7 @@ export class QuoteFormDialogComponent {
     this.quoteText = data.quoteText;
     this.author = data.author ? `- ${data.author.trim()} -` : "";
     this.isDark = true;
-    this.fancyInt = 0;
+    this.headlineInt = 0;
     this.attributionInt = 0;
     
     this.setHeadline();
@@ -54,7 +56,7 @@ export class QuoteFormDialogComponent {
   }
  
   toggleFancy() {
-    this.fancyInt = (this.fancyInt+1) % 5;
+    this.headlineInt = (this.headlineInt+1) % 5; // iterate through 5 headline styles
     this.setHeadline();
   }
 
@@ -63,8 +65,66 @@ export class QuoteFormDialogComponent {
     if(!this.imgTitle || !this.imgPhotographer)
       return;
 
-    this.attributionInt = (this.attributionInt+1) % 4;
+    this.attributionInt = (this.attributionInt+1) % 4; // iterate through 4 attribution styles
+    this.setAttribution();
+  }
 
+  createPNG() {
+    // Get the preview dialog
+    let display = document.getElementById('motivCanvas');
+    if (!display) return;
+
+    // create a canvas (screenshot)
+    html2canvas(display, { useCORS: true }).then(function (canvas) {
+      let link = document.getElementById('link');
+      if (!link) return;
+
+      // convert the canvas to a png and create a download link
+      link.setAttribute('href', canvas.toDataURL("image/png").replace("image/png", "image/octet-stream"));
+      link.click();
+    });
+  }
+
+  // =====================================================================================================
+  // PRIVATE FUNCTIONS
+  // =====================================================================================================
+
+  /**
+   * Sets the headline to be no underline, full underline, or dropcapped with middle underlined.
+   */
+  private setHeadline() {
+    let text = this.headline ?? "";
+    this.isLandscape = window.screen.availHeight <= window.screen.availWidth;
+
+    switch(this.headlineInt) {
+      // No underline
+      case 0:
+      // Underlined
+      case 1:
+        this.headlinePrefix = "";
+        this.headlineBody = text;
+        this.headlineSuffix = "";
+        break;
+      // Dots before and after headline (underlined and not)
+      case 2:
+      case 3:
+        this.headlinePrefix = "";
+        this.headlineBody = `·${text}·`;
+        this.headlineSuffix = "";
+        break;
+      // Dropcapped first and last character
+      default:
+        let indexEnd = text.length-1;
+        this.headlinePrefix = text.substring(0,1);
+        this.headlineBody = text.substring(1, indexEnd);
+        this.headlineSuffix = text.substring(indexEnd);
+    }
+  }
+
+  /**
+   * Image attribution display
+   */
+  private setAttribution() {
     let titleLink = `<a href="${this.imgTitleURL}" target="_blank">${this.imgTitle}</a>`;
     let photographerLink = `<a href="${this.imgPhotographerURL}" target="_blank">${this.imgPhotographer}</a>`;
 
@@ -88,54 +148,6 @@ export class QuoteFormDialogComponent {
       default:
         this.attribution1 = "";
         this.attribution2 = `${titleLink} by ${photographerLink}`
-    }
-  }
-
-  createPNG() {
-    // Get the preview dialog
-    let display = document.getElementById('motivCanvas');
-    if (!display) return;
-
-    // create a canvas (screenshot)
-    html2canvas(display, { useCORS: true }).then(function (canvas) {
-      let link = document.getElementById('link');
-      if (!link) return;
-
-      // convert the canvas to a png and create a download link
-      link.setAttribute('href', canvas.toDataURL("image/png").replace("image/png", "image/octet-stream"));
-      link.click();
-    });
-  }
-
-  /**
-   * Sets the headline to be no underline, full underline, or dropcapped with middle underlined.
-   */
-  private setHeadline() {
-    let text = this.headline ?? "";
-    this.isLandscape = window.screen.availHeight <= window.screen.availWidth;
-
-    switch(this.fancyInt) {
-      // No underline
-      case 0:
-      // Underlined
-      case 1:
-        this.headlinePrefix = "";
-        this.headlineBody = text;
-        this.headlineSuffix = "";
-        break;
-      // Dots before and after headline (underlined and not)
-      case 2:
-      case 3:
-        this.headlinePrefix = "";
-        this.headlineBody = `·${text}·`;
-        this.headlineSuffix = "";
-        break;
-      // Dropcapped first and last character
-      default:
-        let indexEnd = text.length-1;
-        this.headlinePrefix = text.substring(0,1);
-        this.headlineBody = text.substring(1, indexEnd);
-        this.headlineSuffix = text.substring(indexEnd);
     }
   }
 }
