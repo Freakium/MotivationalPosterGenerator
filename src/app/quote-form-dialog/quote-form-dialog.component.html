@@ -1,8 +1,8 @@
 <div class="toggleModeBtns">
-  <button mat-icon-button aria-label="toggle colour mode" title="toggle light/dark" (click)="toggleMode()">
+  <button mat-icon-button aria-label="toggle colour mode" title="toggle light/dark" (click)="toggleDarkMode()">
     <mat-icon [ngStyle]="{color: this.isDark ? '#fff' : '#000'}">contrast</mat-icon>
   </button>
-  <button mat-icon-button aria-label="toggle fancy headline" title="toggle headline style" (click)="toggleFancy()">
+  <button mat-icon-button aria-label="toggle fancy headline" title="toggle headline style" (click)="toggleHeadline()">
     <mat-icon [ngStyle]="{color: this.isDark ? '#fff' : '#000'}">format_underlined</mat-icon>
   </button>
   <button mat-icon-button aria-label="toggle attribution" title="toggle attribution" *ngIf="imgTitle && imgPhotographer" (click)="toggleAttribution()">

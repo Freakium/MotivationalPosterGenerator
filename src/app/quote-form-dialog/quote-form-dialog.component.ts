@@ -51,11 +51,11 @@ export class QuoteFormDialogComponent {
     this.setHeadline();
   }
 
-  toggleMode() {
+  toggleDarkMode() {
     this.isDark = !this.isDark;
   }
  
-  toggleFancy() {
+  toggleHeadline() {
     this.headlineInt = (this.headlineInt+1) % 5; // iterate through 5 headline styles
     this.setHeadline();
   }
