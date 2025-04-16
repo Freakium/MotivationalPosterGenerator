@@ -11,3 +11,29 @@ body {
     background: linear-gradient(#266fb1, #bbd7f0);
     background-attachment: fixed;
 }
+
+.darkMode {
+    background: linear-gradient(#071724, #0a0e11);
+    background-attachment: fixed;
+    
+    app-quote-form .card {
+        background-color: rgba(115, 115, 115, 0.75) !important;
+        border: 1px solid #555;
+        color: #fff;
+        .mdc-text-field {
+            background-color: #1e1e1e;
+            input::placeholder, textarea::placeholder {
+                color: #aaa;
+            }
+            input, textarea, span {
+                color: #fff;
+            }
+        }
+        .mdc-text-field--filled:not(.mdc-text-field--focused) .mdc-floating-label {
+            color: #aaa;
+        }
+        .mdc-label {
+            color: #fff;
+        }
+    }
+}
