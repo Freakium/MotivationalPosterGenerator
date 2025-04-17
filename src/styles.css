@@ -20,6 +20,9 @@ body {
         background-color: rgba(115, 115, 115, 0.75) !important;
         border: 1px solid #555;
         color: #fff;
+        mat-select .mat-mdc-select-arrow {
+            color: #fff;
+        }
         .mdc-text-field {
             background-color: #1e1e1e;
             input::placeholder, textarea::placeholder {
@@ -35,5 +38,16 @@ body {
         .mdc-label {
             color: #fff;
         }
+    }
+
+    .mat-mdc-select-panel {
+        background-color: #000;
+    }
+    .mat-mdc-option {
+        background-color: #333;
+        color: #ccc;
+    }
+    .mat-mdc-option-active {
+        background-color: #1e1e1e !important;
     }
 }
