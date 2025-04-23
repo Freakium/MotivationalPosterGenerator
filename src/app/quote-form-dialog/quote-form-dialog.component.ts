@@ -114,10 +114,9 @@ export class QuoteFormDialogComponent {
         break;
       // Dropcapped first and last character
       default:
-        let indexEnd = text.length-1;
-        this.headlinePrefix = text.substring(0,1);
-        this.headlineBody = text.substring(1, indexEnd);
-        this.headlineSuffix = text.substring(indexEnd);
+        this.headlinePrefix = text.slice(0, 1);
+        this.headlineBody = text.slice(1, -1);
+        this.headlineSuffix = text.slice(-1);
     }
   }
 
