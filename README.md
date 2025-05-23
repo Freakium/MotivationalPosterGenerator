@@ -4,7 +4,7 @@ This project allows users to create a motivational poster fit with an image, a h
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.3.
 
-You can access this project online at: http://motivgen.scienceontheweb.net
+You can access this project online at: https://freakium.github.io/motivgen/
 
 ## Development server
 
